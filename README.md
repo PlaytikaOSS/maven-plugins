@@ -1,6 +1,7 @@
 # Mixin Maven Plugin
 
 ## Introduction
+This is updated version of the original maven plugin [mixin-maven-plugin](https://github.com/odavid/maven-plugins/tree/master/mixin-maven-plugin)
 
 Mixin Maven Plugin is a Maven Extension that allows including multiple pom plugin Management sections without the need
 to inherit them from a single root parent.
