@@ -17,14 +17,14 @@ can embed it in any module build section, without copy/paste or defining it in a
 
 In order to use this plugin, you first need to create a mixin pom or use an existing one.
 An example for a mixin pom can be
-found [here](../../../blob/master/examples/mixin-maven-plugin/mixin-example/mixin1/pom.xml)
+found [here](https://raw.githubusercontent.com/PlaytikaOSS/maven-plugins/develop/examples/mixin-maven-plugin/mixin-example/mixin1/pom.xml)
 
 Next step would be to consume this mixin in your consumer pom.
 An example for a mixin consumer can be
-found [here](../../../blob/master/examples/mixin-maven-plugin/mixin-example/mixin-consumer/pom.xml)
+found [here](https://raw.githubusercontent.com/PlaytikaOSS/maven-plugins/develop/examples/mixin-maven-plugin/mixin-consumer/pom.xml)
 
 The full example (including a base parent pom) can be downloaded
-from [here](../../../tree/master/examples/mixin-maven-plugin/mixin-example/)
+from [here](https://github.com/PlaytikaOSS/maven-plugins/tree/develop/examples/mixin-maven-plugin/mixin-example)
 
 ## Notes
 
