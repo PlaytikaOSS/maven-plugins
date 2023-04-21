@@ -1,0 +1,29 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>test-mixin</groupId>
+    <artifactId>base-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>${project.groupId}:${project.artifactId}</name>
+
+    <properties>
+        <version.com.playtika.maven.plugins>1.0.0-SNAPSHOT</version.com.playtika.maven.plugins>
+    </properties>
+    <modules>
+        <module>mixin1</module>
+        <module>mixin2</module>
+        <module>mixin-consumer</module>
+    </modules>
+    <build>
+        <pluginManagement>
+            <!-- Manage plugin versions in base parent. This enable you to control the plugin versions within the mixin and the mixin consumer. As best practice, use version properties -->
+            <plugins>
+                <plugin>
+                    <groupId>com.playtika.maven.plugins</groupId>
+                    <artifactId>mixin-maven-plugin</artifactId>
+                    <version>${version.com.playtika.maven.plugins}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
