@@ -127,8 +127,8 @@ public class MixinModelMerger extends MavenModelMerger {
     /**
      * Fully merges pluginContainers with their plugins, their executions and their configuration
      *
-     * @param targetPlugin
-     * @param sourcePlugin
+     * @param targetContainer
+     * @param sourceContainer
      * @param context
      */
     private void mergePluginContainers(PluginContainer targetContainer, PluginContainer sourceContainer, Map<Object, Object> context, boolean addTargetPlugin) {
