@@ -7,7 +7,7 @@
     <name>${project.groupId}:${project.artifactId}</name>
 
     <properties>
-        <version.com.playtika.maven.plugins>1.0.1</version.com.playtika.maven.plugins>
+        <version.com.playtika.maven.plugins>1.0.0-SNAPSHOT</version.com.playtika.maven.plugins>
     </properties>
     <modules>
         <module>mixin1</module>
