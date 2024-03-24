@@ -19,6 +19,7 @@ public class Mixin {
     private Boolean mergeScm;
     private Boolean mergeRepositories;
     private Boolean mergePluginRepositories;
+    private Boolean mergeBuildExtensions;
     private Boolean recurse;
     private Boolean activateProfiles;
     private Mixins mixins;
@@ -113,6 +114,10 @@ public class Mixin {
         return mergePluginRepositories != null ? mergePluginRepositories : mixins.isMergePluginRepositories();
     }
 
+    public boolean isMergeBuildExtensions() {
+        return mergeBuildExtensions != null ? mergeBuildExtensions : mixins.isMergeBuildExtensions();
+    }
+
     public void setMergePluginRepositories(Boolean mergePluginRepositories) {
         this.mergePluginRepositories = mergePluginRepositories;
     }
@@ -168,11 +173,13 @@ public class Mixin {
         if (isMergePluginRepositories()) {
             mixinModelMerger.mergePluginRepositories(mavenProject.getModel(), mixinModel);
         }
+        if (isMergeBuildExtensions()) {
+            mixinModelMerger.mergeBuildExtensions(mavenProject.getModel(), mixinModel);
+        }
     }
 
     @Override
     public String toString() {
         return getKey();
     }
-
 }
