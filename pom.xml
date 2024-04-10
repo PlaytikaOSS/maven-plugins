@@ -4,7 +4,7 @@
 
     <groupId>com.playtika.maven.plugins</groupId>
     <artifactId>plugins-parent</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.4</version>
     <packaging>pom</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -16,25 +16,25 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
 
-        <maven-core.version>3.9.5</maven-core.version>
+        <maven-core.version>3.9.6</maven-core.version>
 
-        <maven-surefire-plugin.version>3.2.2</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-        <maven-plugin-plugin.version>3.10.2</maven-plugin-plugin.version>
+        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <maven-plugin-plugin.version>3.12.0</maven-plugin-plugin.version>
 
         <plexus-utils.version>3.5.1</plexus-utils.version>
-        <maven-plugin-annotations.version>3.10.2</maven-plugin-annotations.version>
+        <maven-plugin-annotations.version>3.12.0</maven-plugin-annotations.version>
         <maven-plugin-api.version>3.9.0</maven-plugin-api.version>
-        <maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
         <maven-plugin-tools-javadoc.version>3.5.2</maven-plugin-tools-javadoc.version>
         <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
-        <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
-        <plexus-component-metadata.version>2.1.1</plexus-component-metadata.version>
+        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
+        <plexus-component-metadata.version>2.2.0</plexus-component-metadata.version>
 
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
-        <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
+        <maven-gpg-plugin.version>3.2.2</maven-gpg-plugin.version>
 
-        <junit-jupiter.version>5.10.1</junit-jupiter.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
 
         <!-- GPG -->
         <gpg.keyname>3EEF24C7</gpg.keyname>
