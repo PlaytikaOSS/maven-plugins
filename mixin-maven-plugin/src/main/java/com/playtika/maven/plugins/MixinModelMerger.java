@@ -1,5 +1,9 @@
 package com.playtika.maven.plugins;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.maven.model.Build;
 import org.apache.maven.model.DistributionManagement;
 import org.apache.maven.model.Model;
@@ -12,10 +16,6 @@ import org.apache.maven.model.ReportSet;
 import org.apache.maven.model.Reporting;
 import org.apache.maven.model.merge.MavenModelMerger;
 import org.codehaus.plexus.component.annotations.Component;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * MixinModelMerger
@@ -187,4 +187,10 @@ public class MixinModelMerger extends MavenModelMerger {
         super.mergeModelBase_PluginRepositories(targetModel, sourceModel, false, context);
     }
 
+    public void mergeBuildExtensions(Model targetModel, Model sourceModel) {
+        Map<Object, Object> context = new HashMap<Object, Object>();
+        Build targetBuild = targetModel.getBuild();
+        Build sourceBuild = sourceModel.getBuild();
+        super.mergeBuild_Extensions(targetBuild, sourceBuild, false, context);
+    }
 }
