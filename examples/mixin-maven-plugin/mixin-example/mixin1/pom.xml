@@ -13,15 +13,6 @@
         <message>HELLO DEFAULT MESSAGE FROM MIXIN</message>
     </properties>
     <build>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.extensions</groupId>
-                <artifactId>maven-build-cache-extension</artifactId>
-                <version>1.0.1</version>
-            </extension>
-        </extensions>
-
-
         <pluginManagement>
             <plugins>
                 <!-- This is a simple execution of antrun during initialize phase to echo a message from a property.
