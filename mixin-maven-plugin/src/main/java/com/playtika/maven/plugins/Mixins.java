@@ -7,7 +7,6 @@ public class Mixins {
     private List<Mixin> mixins = new ArrayList<Mixin>();
     private boolean mergePlugins = true;
     private boolean mergePluginManagement = true;
-    private boolean mergeBuildExtensions = true;
     private boolean mergeProperties = true;
     private boolean mergeReporting = true;
     private boolean mergeDistributionManagement = true;
@@ -110,10 +109,6 @@ public class Mixins {
 
     public boolean isMergePluginRepositories() {
         return mergePluginRepositories;
-    }
-
-    public boolean isMergeBuildExtensions() {
-        return mergeBuildExtensions;
     }
 
     public void setMergePluginRepositories(boolean mergePluginRepositories) {
