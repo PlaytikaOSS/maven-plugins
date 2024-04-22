@@ -23,6 +23,7 @@
         <maven-plugin-plugin.version>3.12.0</maven-plugin-plugin.version>
 
         <plexus-utils.version>4.0.1</plexus-utils.version>
+        <plexus-xml.version>3.0.0</plexus-xml.version>
         <maven-plugin-annotations.version>3.12.0</maven-plugin-annotations.version>
         <maven-plugin-api.version>3.9.0</maven-plugin-api.version>
         <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
@@ -32,7 +33,7 @@
         <plexus-component-metadata.version>2.2.0</plexus-component-metadata.version>
 
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
-        <maven-gpg-plugin.version>3.2.2</maven-gpg-plugin.version>
+        <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
 
         <junit-jupiter.version>5.10.2</junit-jupiter.version>
 
@@ -130,6 +131,11 @@
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-utils</artifactId>
                 <version>${plexus-utils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-xml</artifactId>
+                <version>${plexus-xml.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
