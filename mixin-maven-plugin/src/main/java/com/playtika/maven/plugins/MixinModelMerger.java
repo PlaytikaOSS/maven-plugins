@@ -1,9 +1,5 @@
 package com.playtika.maven.plugins;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.maven.model.Build;
 import org.apache.maven.model.DistributionManagement;
 import org.apache.maven.model.Model;
@@ -17,6 +13,10 @@ import org.apache.maven.model.Reporting;
 import org.apache.maven.model.merge.MavenModelMerger;
 import org.codehaus.plexus.component.annotations.Component;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * MixinModelMerger
  * Enables pluginManagement and properties import from different pom files. Uses protected methods of MavenModelMerger, and therefore inherits from it
@@ -25,7 +25,7 @@ import org.codehaus.plexus.component.annotations.Component;
 public class MixinModelMerger extends MavenModelMerger {
 
     public void mergePluginManagement(Model target, Model source) {
-        Map<Object, Object> context = new HashMap<Object, Object>();
+        Map<Object, Object> context = new HashMap<>();
         if (source.getBuild() != null && source.getBuild().getPluginManagement() != null) {
             if (target.getBuild() == null) {
                 target.setBuild(new Build());
@@ -91,12 +91,12 @@ public class MixinModelMerger extends MavenModelMerger {
     }
 
     public void applyPluginManagementOnPlugins(Model model) {
-        Map<Object, Object> context = new HashMap<Object, Object>();
+        Map<Object, Object> context = new HashMap<>();
         mergePluginContainers(model.getBuild(), model.getBuild().getPluginManagement(), context, false);
     }
 
     public void mergePlugins(Model target, Model source) {
-        Map<Object, Object> context = new HashMap<Object, Object>();
+        Map<Object, Object> context = new HashMap<>();
         if (source.getBuild() != null) {
             if (target.getBuild() == null) {
                 target.setBuild(new Build());
@@ -108,14 +108,14 @@ public class MixinModelMerger extends MavenModelMerger {
     }
 
     public void mergeProperties(Model target, Model source) {
-        Map<Object, Object> context = new HashMap<Object, Object>();
+        Map<Object, Object> context = new HashMap<>();
         if (source.getProperties() != null) {
             super.mergeModelBase_Properties(target, source, false, context);
         }
     }
 
     public void mergeDistributionManagement(Model target, Model source) {
-        Map<Object, Object> context = new HashMap<Object, Object>();
+        Map<Object, Object> context = new HashMap<>();
         if (source.getDistributionManagement() != null) {
             if (target.getDistributionManagement() == null) {
                 target.setDistributionManagement(new DistributionManagement());

@@ -67,8 +67,19 @@ public class MixinMavenLifecycleParticipant extends AbstractMavenLifecyclePartic
 
         List<MavenProject> projects = mavenSession.getProjects();
         for (MavenProject module : projects) {
-            MixinsProjectLoader loader = new MixinsProjectLoader(mavenSession, module,
-                    modelInterpolator, pluginConfigurationExpander, beanConfigurator, logger, mixinModelCache, profileSelector, profileInjector, mixinModelMerger, reportingConverter, repositorySystem);
+            MixinsProjectLoader loader = new MixinsProjectLoader(mavenSession,
+                    module,
+                    modelInterpolator,
+                    pluginConfigurationExpander,
+                    beanConfigurator,
+                    logger,
+                    mixinModelCache,
+                    profileSelector,
+                    profileInjector,
+                    mixinModelMerger,
+                    reportingConverter,
+                    repositorySystem
+            );
             loader.mergeMixins();
         }
         mavenSession.setProjects(projects);

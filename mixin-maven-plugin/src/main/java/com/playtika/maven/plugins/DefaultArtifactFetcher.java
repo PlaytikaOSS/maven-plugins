@@ -11,7 +11,7 @@ import org.apache.maven.repository.RepositorySystem;
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.annotations.Requirement;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 @Component(role = ArtifactFetcher.class, hint = "DefaultArtifactFetcher")
 public class DefaultArtifactFetcher implements ArtifactFetcher {
@@ -19,7 +19,6 @@ public class DefaultArtifactFetcher implements ArtifactFetcher {
     private RepositorySystem repositorySystem;
     @Requirement
     private ResolutionErrorHandler resolutionErrorHandler;
-
 
     @Override
     public Artifact createArtifact(String groupId, String artifactId, String type, String classifier, String version) {
@@ -30,7 +29,7 @@ public class DefaultArtifactFetcher implements ArtifactFetcher {
     public void resolve(Artifact artifact, MavenSession session) throws ArtifactResolutionException {
         ArtifactResolutionRequest request = new ArtifactResolutionRequest();
         request.setArtifact(artifact);
-        request.setCollectionFilter(new IncludesArtifactFilter(Arrays.asList((new String[]{artifact.getId()}))));
+        request.setCollectionFilter(new IncludesArtifactFilter(Collections.singletonList(artifact.getId())));
 
         request.setResolveRoot(true)
                 .setResolveTransitively(true)
@@ -46,5 +45,4 @@ public class DefaultArtifactFetcher implements ArtifactFetcher {
         ArtifactResolutionResult result = repositorySystem.resolve(request);
         resolutionErrorHandler.throwErrors(request, result);
     }
-
 }
