@@ -22,7 +22,8 @@
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <maven-plugin-plugin.version>3.12.0</maven-plugin-plugin.version>
 
-        <plexus-utils.version>3.5.1</plexus-utils.version>
+        <plexus-utils.version>4.0.1</plexus-utils.version>
+        <plexus-xml.version>3.0.0</plexus-xml.version>
         <maven-plugin-annotations.version>3.12.0</maven-plugin-annotations.version>
         <maven-plugin-api.version>3.9.0</maven-plugin-api.version>
         <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
@@ -130,6 +131,11 @@
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-utils</artifactId>
                 <version>${plexus-utils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-xml</artifactId>
+                <version>${plexus-xml.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
