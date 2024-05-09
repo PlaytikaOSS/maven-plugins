@@ -2,7 +2,7 @@ package com.playtika.maven.plugins;
 
 import org.apache.maven.MavenExecutionException;
 import org.apache.maven.artifact.InvalidRepositoryException;
-import org.apache.maven.artifact.repository.ArtifactRepository;
+import org.apache.maven.artifact.repository.MavenArtifactRepository;
 import org.apache.maven.configuration.BeanConfigurationException;
 import org.apache.maven.configuration.BeanConfigurationRequest;
 import org.apache.maven.configuration.BeanConfigurator;
@@ -31,7 +31,7 @@ import org.codehaus.plexus.logging.Logger;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -43,20 +43,20 @@ public class MixinsProjectLoader {
     public static final String PLUGIN_GROUPID = "com.playtika.maven.plugins";
     public static final String PLUGIN_ARTIFACTID = "mixin-maven-plugin";
 
-    private MavenSession mavenSession;
-    private MavenProject mavenProject;
-    private ProfileSelector profileSelector;
-    private ProfileInjector profileInjector;
-    private MixinModelMerger mixinModelMerger;
-    private ModelInterpolator modelInterpolator;
-    private PluginConfigurationExpander pluginConfigurationExpander;
-    private BeanConfigurator beanConfigurator;
-    private ReportingConverter reportingConverter;
-    private RepositorySystem repositorySystem;
+    private final MavenSession mavenSession;
+    private final MavenProject mavenProject;
+    private final ProfileSelector profileSelector;
+    private final ProfileInjector profileInjector;
+    private final MixinModelMerger mixinModelMerger;
+    private final ModelInterpolator modelInterpolator;
+    private final PluginConfigurationExpander pluginConfigurationExpander;
+    private final BeanConfigurator beanConfigurator;
+    private final ReportingConverter reportingConverter;
+    private final RepositorySystem repositorySystem;
 
-    private DefaultModelBuildingRequest modelBuildingRequest = new DefaultModelBuildingRequest();
-    private MixinModelCache mixinModelCache;
-    private Logger logger;
+    private final DefaultModelBuildingRequest modelBuildingRequest = new DefaultModelBuildingRequest();
+    private final MixinModelCache mixinModelCache;
+    private final Logger logger;
 
     public MixinsProjectLoader(MavenSession mavenSession, MavenProject mavenProject, ModelInterpolator modelInterpolator,
                                PluginConfigurationExpander pluginConfigurationExpander,
@@ -120,7 +120,7 @@ public class MixinsProjectLoader {
                 reportingConverter.convertReporting(mavenProject.getModel(), request, problems);
             }
         }
-        if (mixinList.size() > 0) {
+        if (!mixinList.isEmpty()) {
             //Apply the pluginManagement section on the plugins section
             mixinModelMerger.applyPluginManagementOnPlugins(mavenProject.getModel());
 
@@ -190,11 +190,11 @@ public class MixinsProjectLoader {
         }
     }
 
-    private ArtifactRepository createRepo(DeploymentRepository deploymentRepo) {
+    private MavenArtifactRepository createRepo(DeploymentRepository deploymentRepo) {
         try {
-            ArtifactRepository repo = repositorySystem.buildArtifactRepository(deploymentRepo);
-            repositorySystem.injectProxy(mavenSession.getRepositorySession(), Arrays.asList(repo));
-            repositorySystem.injectAuthentication(mavenSession.getRepositorySession(), Arrays.asList(repo));
+            MavenArtifactRepository repo = (MavenArtifactRepository) repositorySystem.buildArtifactRepository(deploymentRepo);
+            repositorySystem.injectProxy(mavenSession.getRepositorySession(), Collections.singletonList(repo));
+            repositorySystem.injectAuthentication(mavenSession.getRepositorySession(), Collections.singletonList(repo));
             return repo;
         } catch (InvalidRepositoryException e) {
             throw new IllegalStateException("Failed to create distribution repository " + deploymentRepo.getId() + " for " + mavenProject.getId(), e);

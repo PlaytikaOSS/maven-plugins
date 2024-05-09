@@ -3,22 +3,37 @@ package com.playtika.maven.plugins;
 import org.apache.maven.MavenExecutionException;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.Model;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 public class Mixin {
+    @Parameter(property = "groupId")
     private String groupId;
+    @Parameter(property = "artifactId")
     private String artifactId;
+    @Parameter(property = "version")
     private String version;
+    @Parameter(property = "type")
     private String type;
 
+    @Parameter(property = "mergePluginManagement")
     private Boolean mergePluginManagement;
+    @Parameter(property = "mergePlugins")
     private Boolean mergePlugins;
+    @Parameter(property = "mergeReporting")
     private Boolean mergeReporting;
+    @Parameter(property = "mergeProperties")
     private Boolean mergeProperties;
+    @Parameter(property = "mergeDistributionManagement")
     private Boolean mergeDistributionManagement;
+    @Parameter(property = "mergeScm")
     private Boolean mergeScm;
+    @Parameter(property = "mergeRepositories")
     private Boolean mergeRepositories;
+    @Parameter(property = "mergePluginRepositories")
     private Boolean mergePluginRepositories;
+    @Parameter(property = "mergeBuildExtensions")
+    private Boolean mergeBuildExtensions;
     private Boolean recurse;
     private Boolean activateProfiles;
     private Mixins mixins;
@@ -93,6 +108,10 @@ public class Mixin {
         return mergeDistributionManagement != null ? mergeDistributionManagement : mixins.isMergeDistributionManagement();
     }
 
+    public void setMergeDistributionManagement(Boolean mergeDistributionManagement) {
+        this.mergeDistributionManagement = mergeDistributionManagement;
+    }
+
     public boolean isMergeScm() {
         return mergeScm != null ? mergeScm : mixins.isMergeScm();
     }
@@ -115,6 +134,14 @@ public class Mixin {
 
     public void setMergePluginRepositories(Boolean mergePluginRepositories) {
         this.mergePluginRepositories = mergePluginRepositories;
+    }
+
+    public boolean isMergeBuildExtensions() {
+        return mergeBuildExtensions != null ? mergeBuildExtensions : mixins.isMergeBuildExtensions();
+    }
+
+    public void setMergeBuildExtensions(Boolean mergeBuildExtensions) {
+        this.mergeBuildExtensions = mergeBuildExtensions;
     }
 
     public boolean isRecurse() {
@@ -168,11 +195,13 @@ public class Mixin {
         if (isMergePluginRepositories()) {
             mixinModelMerger.mergePluginRepositories(mavenProject.getModel(), mixinModel);
         }
+        if (isMergeBuildExtensions()) {
+            mixinModelMerger.mergeBuildExtensions(mavenProject.getModel(), mixinModel);
+        }
     }
 
     @Override
     public String toString() {
         return getKey();
     }
-
 }

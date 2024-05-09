@@ -14,22 +14,22 @@ import java.util.List;
 import java.util.Set;
 
 public class MixinModelProblemCollector implements ModelProblemCollector {
+    private final Set<ModelProblem.Severity> SEVERITIES = EnumSet.noneOf(ModelProblem.Severity.class);
     List<ModelProblemCollectorRequest> problems = new ArrayList<>();
-    private Set<ModelProblem.Severity> severities = EnumSet.noneOf(ModelProblem.Severity.class);
 
     @Override
     public void add(ModelProblemCollectorRequest req) {
         problems.add(req);
-        severities.add(req.getSeverity());
+        SEVERITIES.add(req.getSeverity());
     }
 
     public void clear() {
         problems.clear();
-        severities.clear();
+        SEVERITIES.clear();
     }
 
     public void checkErrors(File pom) throws MavenExecutionException {
-        if (severities.contains(ModelProblem.Severity.ERROR) || severities.contains(ModelProblem.Severity.FATAL)) {
+        if (SEVERITIES.contains(ModelProblem.Severity.ERROR) || SEVERITIES.contains(ModelProblem.Severity.FATAL)) {
             PrintWriter out = new PrintWriter(new StringWriter());
             for (ModelProblemCollectorRequest request : problems) {
                 out.printf("Model Problem: %s%n", request.getMessage());

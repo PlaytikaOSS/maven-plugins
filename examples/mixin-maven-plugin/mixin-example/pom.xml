@@ -7,8 +7,9 @@
     <name>${project.groupId}:${project.artifactId}</name>
 
     <properties>
-        <version.com.playtika.maven.plugins>1.0.1</version.com.playtika.maven.plugins>
+        <mixin-maven-plugin.version>1.0.5-SNAPSHOT</mixin-maven-plugin.version>
     </properties>
+
     <modules>
         <module>mixin1</module>
         <module>mixin2</module>
@@ -21,9 +22,16 @@
                 <plugin>
                     <groupId>com.playtika.maven.plugins</groupId>
                     <artifactId>mixin-maven-plugin</artifactId>
-                    <version>${version.com.playtika.maven.plugins}</version>
+                    <version>${mixin-maven-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
+    <!--
+    How to test :
+    1. build all mixin
+    2. locate to mixin-consumer
+    3. Run: mvn -Dmixin-maven-plugin.version=1.0.4 help:effective-pom -U
+    -->
 </project>

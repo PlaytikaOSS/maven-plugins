@@ -1,20 +1,33 @@
 package com.playtika.maven.plugins;
 
+import org.apache.maven.plugins.annotations.Parameter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Mixins {
     private List<Mixin> mixins = new ArrayList<Mixin>();
+    private String defaultMixinType = "pom";
+
+    @Parameter(property = "mergePlugins")
     private boolean mergePlugins = true;
+    @Parameter(property = "mergePluginManagement")
     private boolean mergePluginManagement = true;
+    @Parameter(property = "mergeBuildExtensions")
+    private boolean mergeBuildExtensions = true;
+    @Parameter(property = "mergeProperties")
     private boolean mergeProperties = true;
+    @Parameter(property = "mergeReporting")
     private boolean mergeReporting = true;
+    @Parameter(property = "mergeDistributionManagement")
     private boolean mergeDistributionManagement = true;
     private boolean recurse = true;
     private boolean activateProfiles = true;
-    private String defaultMixinType = "pom";
+    @Parameter(property = "mergeScm")
     private boolean mergeScm = true;
+    @Parameter(property = "mergeRepositories")
     private boolean mergeRepositories = true;
+    @Parameter(property = "mergePluginRepositories")
     private boolean mergePluginRepositories = true;
 
     public String getDefaultMixinType() {
@@ -90,7 +103,6 @@ public class Mixins {
         this.mergeReporting = mergeReporting;
     }
 
-
     public boolean isMergeScm() {
         return mergeScm;
     }
@@ -109,6 +121,14 @@ public class Mixins {
 
     public boolean isMergePluginRepositories() {
         return mergePluginRepositories;
+    }
+
+    public boolean isMergeBuildExtensions() {
+        return mergeBuildExtensions;
+    }
+
+    public void setMergeBuildExtensions(boolean mergeBuildExtensions) {
+        this.mergeBuildExtensions = mergeBuildExtensions;
     }
 
     public void setMergePluginRepositories(boolean mergePluginRepositories) {
