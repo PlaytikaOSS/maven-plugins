@@ -16,6 +16,7 @@ import org.codehaus.plexus.component.annotations.Component;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * MixinModelMerger
@@ -189,8 +190,13 @@ public class MixinModelMerger extends MavenModelMerger {
 
     public void mergeBuildExtensions(Model targetModel, Model sourceModel) {
         Map<Object, Object> context = new HashMap<Object, Object>();
-        Build targetBuild = targetModel.getBuild();
+
         Build sourceBuild = sourceModel.getBuild();
+        if (Objects.isNull(sourceBuild)) {
+            return;
+        }
+
+        Build targetBuild = targetModel.getBuild();
         super.mergeBuild_Extensions(targetBuild, sourceBuild, false, context);
     }
 }
