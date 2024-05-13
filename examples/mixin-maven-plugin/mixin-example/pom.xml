@@ -32,6 +32,6 @@
     How to test :
     1. build all mixin
     2. locate to mixin-consumer
-    3. Run: mvn -Dmixin-maven-plugin.version=1.0.4 help:effective-pom -U
+    3. Run: mvn -Dmixin-maven-plugin.version=1.0.5 help:effective-pom -U
     -->
 </project>
