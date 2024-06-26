@@ -20,7 +20,7 @@
 
         <maven-surefire-plugin.version>3.3.0</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
-        <maven-plugin-plugin.version>3.13.0</maven-plugin-plugin.version>
+        <maven-plugin-plugin.version>3.13.1</maven-plugin-plugin.version>
 
         <plexus-utils.version>4.0.1</plexus-utils.version>
         <plexus-xml.version>3.0.1</plexus-xml.version>
