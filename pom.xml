@@ -33,7 +33,7 @@
         <plexus-component-metadata.version>2.2.0</plexus-component-metadata.version>
 
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
-        <maven-gpg-plugin.version>3.2.6</maven-gpg-plugin.version>
+        <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
 
         <junit-jupiter.version>5.11.0</junit-jupiter.version>
 
