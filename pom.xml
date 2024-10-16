@@ -35,7 +35,7 @@
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
 
-        <junit-jupiter.version>5.11.1</junit-jupiter.version>
+        <junit-jupiter.version>5.11.2</junit-jupiter.version>
 
         <!-- GPG -->
         <gpg.keyname>3EEF24C7</gpg.keyname>
