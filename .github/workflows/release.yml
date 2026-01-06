@@ -49,11 +49,7 @@ jobs:
       - name: Update version
         if: ${{ success() }}
         run: |
-          ./mvnw --batch-mode --no-transfer-progress versions:set -DnewVersion=${{ github.event.inputs.version }} versions:commit
-          git config user.name "jenkins"
-          git config user.email "jenkins@playtika.com"
-          git commit -m "Release ${{ github.event.inputs.version }}" -a
-          git push
+          ./mvnw --batch-mode --no-transfer-progress versions:set -DnewVersion=${{ github.event.inputs.version }}
 
       - name: Publish to the Maven Central Repository
         if: ${{ success() }}
@@ -63,7 +59,17 @@ jobs:
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
+      - name: Commit version
+        if: ${{ success() }}
+        run: |
+          ./mvnw --batch-mode --no-transfer-progress versions:commit
+          git config user.name "jenkins"
+          git config user.email "jenkins@playtika.com"
+          git commit -m "Release ${{ github.event.inputs.version }}" -a
+          git push
+
       - name: Publish release on GitHub
+        if: ${{ success() }}
         uses: test-room-7/action-publish-release-drafts@v0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

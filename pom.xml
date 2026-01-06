@@ -4,7 +4,7 @@
 
     <groupId>com.playtika.maven.plugins</groupId>
     <artifactId>plugins-parent</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.6</version>
     <packaging>pom</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -17,7 +17,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.release>${maven.compiler.target}</maven.compiler.release>
 
-        <maven-core.version>3.9.12</maven-core.version>
+        <maven-core.version>3.9.6</maven-core.version>
 
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
