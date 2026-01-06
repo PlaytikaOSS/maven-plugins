@@ -15,6 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>${maven.compiler.target}</maven.compiler.release>
 
         <maven-core.version>3.9.12</maven-core.version>
 
@@ -138,6 +139,7 @@
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-xml</artifactId>
                 <version>${plexus-xml.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
