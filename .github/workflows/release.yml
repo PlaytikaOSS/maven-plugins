@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ secrets.RELEASE_PERSONAL_ACCESS_TOKEN }}
       - name: Validate ${{ github.event.inputs.version }} release exists
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -35,17 +35,20 @@ jobs:
             throw new Error(`Release ${{ github.event.inputs.version }} is not available`);
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        if: ${{ success() }}
+        uses: actions/setup-java@v5
         with:
           distribution: 'zulu'
           java-version: '17'
-          server-id: ossrh
+          server-id: central
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
+          cache: 'maven'
 
       - name: Update version
+        if: ${{ success() }}
         run: |
           ./mvnw --batch-mode --no-transfer-progress versions:set -DnewVersion=${{ github.event.inputs.version }} versions:commit
           git config user.name "jenkins"
@@ -54,7 +57,8 @@ jobs:
           git push
 
       - name: Publish to the Maven Central Repository
-        run: ./mvnw --batch-mode --no-transfer-progress -Dgib.disable=true -Ddocker.cleanup.skip=true -P ossrh -DskipTests deploy
+        if: ${{ success() }}
+        run: ./mvnw --batch-mode --no-transfer-progress -Dgib.disable=true -Ddocker.cleanup.skip=true -P central -DskipTests deploy
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
